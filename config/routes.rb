@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root to: "users#index"
+  resources :users, only: %i[index new create]
+  resources :sessions, only: %i[new create destroy]
+  resources :restaurants, only: [:index]
+  get 'password' , to: 'passwords#new'
+  post 'password' , to: 'passwords#create'
+  get 'password/edit' , to: "passwords#edit"
+  patch "password/edit" , to: "passwords#update"
+
 end
