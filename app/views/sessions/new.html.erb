@@ -1,6 +1,6 @@
 <h1>Login</h1>
 <div class="w-25 container">
-  <%= form_with url: sessions_path  do |form| %>
+  <%= form_with url: sessions_path, local: true  do |form| %>
     <div class="mb-3">
       <%= label_tag 'Email' %><br>
       <%= text_field_tag :email , params[:email] %>
