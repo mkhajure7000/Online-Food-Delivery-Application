@@ -1,5 +1,17 @@
 h1 {
-  color: navy;
+  color: crimson;
   margin-left: 20px;
   text-align: center;
+}
+
+.navbar {
+  padding: 0;
+  transition: background 0.5s ease-in-out 0s, padding 0.5s ease-in-out 0s;
+}
+.navbar-brand {
+  float: left;
+  font-size: 18px;
+  height: 10px;
+  line-height: 2px;
+  padding: 2px;
 }
