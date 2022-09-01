@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :current_restaurant, only: %i[update edit destroy]
-  
+  before_action :logged_in_user
+
   def index
     @restaurants = current_user.restaurants.all
   end
