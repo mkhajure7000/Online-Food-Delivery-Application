@@ -1,2 +1,16 @@
 <h1>Welcome Admin</h1>
-<h1><%= button_to "logout", {controller: "sessions", action: "destroy", id: "current_user.id" }, :method => :delete, class: "btn btn-success"%></h1>
+<h1><%= link_to "Add Restaurant", new_restaurant_path, class: "btn btn-success" %></h1>
+<h1><%= button_to "logout", {controller: "sessions", action: "destroy", id: "current_user.id" }, method: "delete", class: "btn btn-success"%></h1>
+<h1> 
+  <% @restaurants.each do |restaurant| %>
+    <div class="card" style="width: 20rem; display:inline-block;">
+      <img class="card-img-top" src="#" alt="Card image cap" height="200" width="200" style="border-radius:.60rem;">
+      <div class="card-block">
+        <h4 class="card-title"><%= restaurant.name %><br></h4>
+        <h4 class="card-title"><%= restaurant.address %><br></h4>
+         <%= link_to "Edit Restaurant", edit_restaurant_path(restaurant), class:"btn btn-primary btn-sm" %>
+         <%= button_to "delete", restaurant, method: "delete", class:"btn btn-primary btn-sm" %>   
+     </div>
+    </div>
+  <% end %>
+</h1>
