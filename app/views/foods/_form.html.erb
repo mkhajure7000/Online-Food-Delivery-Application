@@ -1,0 +1,22 @@
+<div class="w-25 container">
+  <%= form_for [@restaurant, @food], url: restaurant_foods_path(:value => params[:restaurant_id]) do |form| %>
+    <% if @food.errors.full_messages.any? %>
+      <%= render 'shared/error', object: @food %>
+    <%end%>
+    <%= form.label :name %><br>
+    <div class="mb-3">
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <%= form.label :price %><br>
+    <div class="mb-3">
+      <%= form.text_field :price, class: "form-control" %>
+    </div>
+    <%= form.label :quantity %><br>
+    <div class="mb-3">
+      <%= form.text_field :quantity, class: "form-control" %>
+    </div>
+    <div>
+      <%= form.submit "Add"  %>
+    </div>
+  <% end %>
+</div>
