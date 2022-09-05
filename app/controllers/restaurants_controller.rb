@@ -31,6 +31,7 @@ class RestaurantsController < ApplicationController
   
   def destroy
     @restaurant.destroy
+    flash[:notice] = "Delete Successfully"
     redirect_to restaurants_path, status: :see_other
   end
 
