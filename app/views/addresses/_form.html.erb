@@ -1,0 +1,28 @@
+<div style="min-height:72vh">
+  <div class="w-25 container">
+    <%= form_with model: [current_user, @address], local: true do |form| %>
+      <% if @address.errors.full_messages.any? %>
+        <%= render 'shared/error', object: @address %>
+      <%end%>
+      <%= form.label :area %><br>
+      <div class="mb-3">
+        <%= form.text_field :area, class: "form-control" %>
+      </div>
+      <%= form.label :city %><br>
+      <div class="mb-3">
+        <%= form.text_field :city, class: "form-control" %>
+      </div>
+      <%= form.label :state %><br>
+      <div class="mb-3">
+        <%= form.text_field :state, class: "form-control" %>
+      </div>
+      <%= form.label :pincode %><br>
+      <div class="mb-3">
+        <%= form.text_field :pincode, class: "form-control" %>
+      </div>
+      <div>
+      <%= form.submit @address.persisted? ? 'Edit' : 'Add' %>
+      </div>
+    <% end %>
+  </div>
+</div>

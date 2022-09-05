@@ -1,22 +1,24 @@
-<div class="w-25 container">
-  <%= form_with model: [@restaurant, @food], local: true do |form| %>
-    <% if @food.errors.full_messages.any? %>
-      <%= render 'shared/error', object: @food %>
-    <%end%>
-    <%= form.label :name %><br>
-    <div class="mb-3">
-      <%= form.text_field :name, class: "form-control" %>
-    </div>
-    <%= form.label :price %><br>
-    <div class="mb-3">
-      <%= form.text_field :price, class: "form-control" %>
-    </div>
-    <%= form.label :quantity %><br>
-    <div class="mb-3">
-      <%= form.text_field :quantity, class: "form-control" %>
-    </div>
-    <div>
-    <%= form.submit @food.persisted? ? 'Edit' : 'Add' %>
-    </div>
-  <% end %>
+<div style="min-height:72vh">
+  <div class="w-25 container">
+    <%= form_with model: [@restaurant, @food], local: true do |form| %>
+      <% if @food.errors.full_messages.any? %>
+        <%= render 'shared/error', object: @food %>
+      <%end%>
+      <%= form.label :name %><br>
+      <div class="mb-3">
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+      <%= form.label :price %><br>
+      <div class="mb-3">
+        <%= form.text_field :price, class: "form-control" %>
+      </div>
+      <%= form.label :quantity %><br>
+      <div class="mb-3">
+        <%= form.text_field :quantity, class: "form-control" %>
+      </div>
+      <div>
+      <%= form.submit @food.persisted? ? 'Edit' : 'Add' %>
+      </div>
+    <% end %>
+  </div>
 </div>

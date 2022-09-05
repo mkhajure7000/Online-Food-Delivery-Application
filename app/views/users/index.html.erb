@@ -1,9 +1,13 @@
-<% if current_user.present? %>
-  <h1>Welcome user</h1>
-<% else %>
-  <h1>
-    Online Food Delivery<br>
-    <%= link_to "Sign up", new_user_path, class: "btn btn-success" %><br>
-    <%= link_to "login", new_session_path, class: "btn btn-success" %>
-  </h1>
-<%end%>
+<div style="min-height:70vh">
+  <div style="min-height:72vh">
+    <% if current_user.present? %>
+      <h1>Online Food Delivery</h1>
+    <% else %>
+      <h1>
+        Online Food Delivery<br>
+        <%= link_to "Sign up", new_user_path, class: "btn btn-success" %><br>
+        <%= link_to "login", new_session_path, class: "btn btn-success" %>
+      </h1>
+    <%end%>
+  </div>
+</div>
