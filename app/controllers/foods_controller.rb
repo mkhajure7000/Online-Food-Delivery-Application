@@ -1,6 +1,7 @@
 class FoodsController < ApplicationController
   before_action :get_restaurant
   before_action :set_food, only: %i[edit update destroy]
+  
   def index
     @foods = @restaurant.foods.all
   end
@@ -11,7 +12,7 @@ class FoodsController < ApplicationController
   
   def create
     @food = @restaurant.foods.new(food_params)
-    if @restaurant.save
+    if @food.save
       redirect_to restaurant_foods_path
     else
       render :new, status: :unprocessable_entity
