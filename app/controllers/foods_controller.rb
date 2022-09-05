@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
-  before_action :get_restaurant
+  before_action :get_restaurant, only: %i[index new create edit update destroy]
   before_action :set_food, only: %i[edit update destroy]
-  
+
   def index
     @foods = @restaurant.foods.all
   end
