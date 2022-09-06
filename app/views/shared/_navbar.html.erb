@@ -13,6 +13,9 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <% if current_user.present? %>
+           <li class="nav-item">
+            <%= link_to "Address", user_addresses_path(current_user.id), class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to "logout", {controller: "sessions", action: "destroy", id: "current_user.id" }, method: "delete", class: "nav-link" %>
           </li>

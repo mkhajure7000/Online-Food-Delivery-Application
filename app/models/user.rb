@@ -3,7 +3,7 @@ class User < ApplicationRecord
   
   # ASSOCIATIONS
   has_many :restaurants 
-  
+  has_many :addresses
   #VALIDATIONS
   validates :name, :email, :password, :contact_number, presence: true
   validates :password, confirmation: { case_sensitive: true }

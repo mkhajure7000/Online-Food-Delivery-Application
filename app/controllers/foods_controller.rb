@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+  before_action :logged_in_user
   before_action :get_restaurant, only: %i[index new create edit update destroy]
   before_action :set_food, only: %i[edit update destroy]
 
