@@ -42,7 +42,7 @@ class FoodsController < ApplicationController
   end
   
   def get_restaurant
-    @restaurant = current_user.restaurants.find_by(id: params[:restaurant_id])
+    @restaurant = Restaurant.find_by(id: params[:restaurant_id])
     if @restaurant.blank?
       flash[:errors] = "restaurant  does not exists"
       redirect_to restaurants_path

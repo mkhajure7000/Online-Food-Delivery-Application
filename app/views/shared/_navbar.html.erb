@@ -13,6 +13,11 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <% if current_user.present? %>
+          <% if current_user.is_admin? %>
+            <li class="nav-item">
+              <%= link_to "Restaurant", restaurants_path(current_user.id), class: "nav-link" %>
+            </li>
+          <% end %>
            <li class="nav-item">
             <%= link_to "Address", user_addresses_path(current_user.id), class: "nav-link" %>
           </li>
