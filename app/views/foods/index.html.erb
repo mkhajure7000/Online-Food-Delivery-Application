@@ -5,20 +5,24 @@
   <% end %>
   <h1> 
     <% @foods.each do |food| %>
-      <div class="card" style="width: 20rem; display:inline-block;">
-        <img class="card-img-top" src="#" alt="Card image cap" height="200" width="200" style="border-radius:.60rem;">
-        <div class="card-block">
-          <% if @restaurant.user == current_user %>
-            <h4 class="card-title"><%= food.name%><br></h4>
-            <h4 class="card-title"><%= food.price %><br></h4>  
-            <%= link_to "Edit Food", edit_restaurant_food_path(@restaurant,food), class:"btn btn-primary btn-sm" %>
-            <%= button_to "delete", restaurant_food_path(@restaurant, food), method: "delete", class:"btn btn-primary btn-sm" %>
-          <% else %>
-            <h4 class="card-title"><%= food.name%><br></h4>
-            <h4 class="card-title"><%= food.price %><br></h4>  
+        <div class="card" style="width: 20rem; display:inline-block;">
+          <% if food.image.present? %>
+            <%= image_tag url_for(food.image), class: "card-img-top", style: "width: 20rem" %><br>
           <% end %>
-       </div>
-      </div>
+          <div class="card-block">
+            <% if @restaurant.user == current_user %>
+              <h4 class="card-title"><%= food.name%><br></h4>
+              <h4 class="card-title"><%= food.price %><br></h4>  
+              <div class="d-flex justify-content-around align-items-center">
+                <%= link_to "Edit Food", edit_restaurant_food_path(@restaurant,food), class:"btn btn-primary btn-sm" %>
+                <%= button_to "delete", restaurant_food_path(@restaurant, food), method: "delete", class:"btn btn-primary btn-sm" %>
+              </div>
+            <% else %>
+              <h4 class="card-title"><%= food.name%><br></h4>
+              <h4 class="card-title"><%= food.price %><br></h4>  
+            <% end %>
+          </div>
+        </div>
     <% end %>
   </h1>
 </div>
