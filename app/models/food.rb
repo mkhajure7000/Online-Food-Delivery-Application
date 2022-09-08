@@ -2,9 +2,9 @@ class Food < ApplicationRecord
 
   # Associations
   belongs_to :restaurant
-  has_one_attached :image
+  has_many_attached :images
   #VALIDATIONS
   validates :name, :price, :quantity, presence: true
-  validates :image, presence: true
+  validates :images, presence: true
 
 end

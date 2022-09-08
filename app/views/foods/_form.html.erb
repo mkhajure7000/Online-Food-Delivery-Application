@@ -18,7 +18,7 @@
       </div>
       <%= form.label :image %><br>
       <div class="mb-3">
-        <%= form.file_field :image %>
+        <%= form.file_field :images, multiple: true %>
       </div>
       <div>
       <%= form.submit @food.persisted? ? 'Edit' : 'Add' %>
