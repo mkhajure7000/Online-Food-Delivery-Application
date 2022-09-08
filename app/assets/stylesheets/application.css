@@ -52,6 +52,10 @@ h1 {
   margin-left: 50px;
 }
 
+.navbar-bg{
+  background-color: #1e3e85 !important;
+}
+
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
