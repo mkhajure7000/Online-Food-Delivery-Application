@@ -5,10 +5,12 @@
   <% end %>
   <h1> 
     <% @foods.each do |food| %>
-      <% if food.images.present? %>
-        <%= image_tag url_for(food.images[0]), class: "card-img-top", style: "width: 20rem" %><br>
-      <% end %>
       <div class="card" style="width: 20rem; display:inline-block;">
+        <% if food.images.present? %>
+          <% food.images.each do |img| %>
+            <%= image_tag url_for(img), class: "card-img-top", style: "width: 20rem" %><br>
+          <% end %>
+        <% end %>
         <div class="card-block">
           <h4 class="card-title"><%= food.name%><br></h4>
           <h4 class="card-title"><%= food.price %><br></h4>  

@@ -4,11 +4,6 @@
   <h1> 
     <% @restaurants.each do |restaurant| %>
       <div class="card" style="width: 20rem; display:inline-block;">
-        <% if restaurant.image.present? %>
-          <%= link_to restaurant_foods_path(restaurant.id) do %>
-            <%= image_tag url_for(restaurant.image), class: "card-img-top", style: "width: 20rem" %>
-          <% end %>       
-        <% end %>
         <div class="card-block">
             <% if restaurant.image.present? %>
               <%= link_to restaurant_foods_path(restaurant.id) do %>
