@@ -1,15 +1,16 @@
 class PasswordsController < ApplicationController
-  before_action :current_password, only: %i[edit update]
-
-  def index; end
+  before_action :require_password, only: [:edit, :update]
 
   def create 
     @user = User.find_by(email: params[:email])
-    if @user.present?
-      PasswordMailer.with(user: @user).reset.deliver_now
-    end
-    flash[:notice] = "If an account with that email was found, we have sent a link to reset your password"
-    redirect_to password_path
+      if @user.present?
+        PasswordMailer.with(user: @user).reset.deliver_now
+        flash[:notice] = "If an account with that email was found, we have sent a link to reset your password"
+        redirect_to password_path
+      else
+        flash[:notice] = "User does not exist with this email"
+        redirect_to password_path
+      end
   end
     
   def edit
@@ -20,10 +21,9 @@ class PasswordsController < ApplicationController
 
   def update
     if @user.update(password_params)
-      flash[:notice] = "Your Password was reset successfully, Please sign in."
-      redirect_to new_session_path
+      redirect_to new_session_path, notice: "Your Password was reset successfully, Please login."
     else
-      render :edit  
+      render :edit 
     end
   end
 
@@ -32,8 +32,8 @@ class PasswordsController < ApplicationController
     params.required(:user).permit(:password, :password_confirmation)
   end
 
-  def current_password
-    @user =  current_user.find_signed!(params[:token], purpose: "password_reset")
+  def require_password
+    @user = User.find_by(params[:id])
   end
 
 end
