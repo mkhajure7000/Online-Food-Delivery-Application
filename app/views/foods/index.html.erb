@@ -19,6 +19,14 @@
               <%= link_to "Edit Food", edit_restaurant_food_path(@restaurant,food), class:"btn btn-primary btn-sm" %>
               <%= button_to "delete", restaurant_food_path(@restaurant, food), method: "delete", class:"btn btn-primary btn-sm" %>
             </div>
+            <h4 class="card-title"><%= food.name%><br></h4>
+            <h4 class="card-title"><%= food.price %><br></h4>  
+            <%= link_to "Edit Food", edit_restaurant_food_path(@restaurant,food), class:"btn btn-primary btn-sm" %>
+            <%= button_to "delete", restaurant_food_path(@restaurant, food), method: "delete", class:"btn btn-primary btn-sm" %>
+          <% else %>
+            <h4 class="card-title"><%= food.name%><br></h4>
+            <h4 class="card-title"><%= food.price %><br></h4>
+            <%= button_to "Add #{food.name} to cart", cart_items_path(:food_id => food.id), class:"btn btn-primary btn-sm"   %>
           <% end %>
         </div>
       </div>
