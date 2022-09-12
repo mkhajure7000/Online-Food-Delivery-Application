@@ -5,9 +5,12 @@ class PasswordsController < ApplicationController
     @user = User.find_by(email: params[:email])
       if @user.present?
         PasswordMailer.with(user: @user).reset.deliver_now
+        flash[:notice] = "If an account with that email was found, we have sent a link to reset your password"
+        redirect_to password_path
+      else
+        flash[:notice] = "User does not exist with this email"
+        redirect_to password_path
       end
-      flash[:notice] = "If an account with that email was found, we have sent a link to reset your password"
-      redirect_to password_path
   end
     
   def edit
