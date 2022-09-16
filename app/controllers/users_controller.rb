@@ -12,7 +12,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       NotificationMailer.create_notification(@user).deliver_now
-      @current_cart = @user.create_cart
       redirect_to new_session_path
     else 
       render :new, status: :unprocessable_entity

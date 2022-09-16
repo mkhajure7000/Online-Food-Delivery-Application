@@ -11,4 +11,8 @@ class User < ApplicationRecord
   validates :password, confirmation: { case_sensitive: true }
   validates :email, uniqueness: true
   
+  def get_cart
+    cart || create_cart
+  end
+
 end
