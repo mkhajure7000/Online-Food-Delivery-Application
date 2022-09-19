@@ -49,19 +49,19 @@
           </div>
         </div>
       <% end %>
-  </div>
-  <h1>
-    <% if @current_cart.cart_items.present? %>
-      Total amount- <%= total_cart_price( @current_cart.cart_items)  %>
-      <div class="mb-2">
-        <%= form_with url: orders_path, method: :post do |form| %>
-          <%= form.label :address %>
-          <%= form.select :address, options_for_select(get_address)  %><br>
-          <%= form.submit "Place Order", class:"btn btn-sm btn-primary" %>
-        <% end %>
-      </div>
-    <% else %>
-      Cart is Empty
-    <% end %>
-  </h1>
+    </div>
+    <h1>
+      <% if @current_cart.cart_items.present? %>
+        Total amount- <%= total_cart_price( @current_cart.cart_items)  %>
+        <div class="mb-2">
+          <%= form_with url: orders_path, method: :post do |form| %>
+            <%= form.label :address %>
+            <%= form.select :address, options_for_select(get_address)  %><br>
+            <%= form.submit "Place Order", class:"btn btn-sm btn-primary" %>
+          <% end %>
+        </div>
+      <% else %>
+        Cart is Empty
+      <% end %>
+    </h1>
 </div>
