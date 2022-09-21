@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       TaskLoggerJob.perform_later
-    redirect_to new_session_path
+      redirect_to new_session_path
     else 
       render :new, status: :unprocessable_entity
     end
