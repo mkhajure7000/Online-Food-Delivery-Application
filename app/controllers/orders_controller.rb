@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.new(order_params)
-    @order.total_amount = total_order_value
+    @order.total_amount = @current_cart.total_cart_price
     if @order.save
       @current_cart.cart_items.each do |cart_item|
         @order_items = @order.order_items.create(food_id: cart_item.food_id, quantity: cart_item.quantity)
@@ -29,14 +29,5 @@ class OrdersController < ApplicationController
   def cart_items
    @cart_items = @current_cart.cart_items
   end
-
-  def total_order_value
-    total = 0
-      @current_cart.cart_items.each do |cart_item|
-      price = cart_item.food.price * cart_item.quantity
-      total += price
-    end
-      return total
-  end
-
+  
 end

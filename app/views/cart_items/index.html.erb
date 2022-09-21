@@ -52,7 +52,7 @@
     </div>
     <h1>
       <% if @current_cart.cart_items.present? %>
-        Total amount- <%= total_cart_price( @current_cart.cart_items)  %>
+        Total amount- <%= @current_cart.total_cart_price  %>
         <div class="mb-2">
           <%= form_with url: orders_path, method: :post do |form| %>
             <%= form.label :address %>

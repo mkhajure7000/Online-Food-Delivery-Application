@@ -9,13 +9,4 @@ module ApplicationHelper
     return all_address
   end
 
-  def total_cart_price(cart_items)
-    total = 0
-    cart_items.each do |cart_item|
-      price = cart_item.food.price * cart_item.quantity
-      total += price
-    end
-    return total
-  end
-
 end
