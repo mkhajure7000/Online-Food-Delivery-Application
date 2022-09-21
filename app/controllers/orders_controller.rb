@@ -6,12 +6,11 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find_by(id: params[:id])
   end
 
   def create
-    @order = current_user.orders.new(order_params)
-    @order.total_amount = @current_cart.total_cart_price
+    @order = current_user.orders.new(order_params.merge(total_amount: @current_cart.total_cart_price))
     if @order.save
       @current_cart.cart_items.each do |cart_item|
         @order_items = @order.order_items.create(food_id: cart_item.food_id, quantity: cart_item.quantity)
