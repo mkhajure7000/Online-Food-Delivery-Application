@@ -6,11 +6,10 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    @food = Food.find(params[:food_id])
-      @cart_item = @current_cart.cart_items.find_by(:food_id => @food)
-      @cart_item = @current_cart.cart_items.new(food_id: params[:food_id])
-      @cart_item.save
-      redirect_back(fallback_location: root_path)
+    @food = Food.find_by(id: params[:food_id])
+    @cart_item = @current_cart.cart_items.new(food_id: params[:food_id])
+    @cart_item.save
+    redirect_back(fallback_location: root_path)
   end 
 
   def destroy
@@ -38,7 +37,7 @@ class CartItemsController < ApplicationController
   end
 
   def get_cart_items
-    @cart_item = @current_cart.cart_items.find(params[:id])
+    @cart_item = @current_cart.cart_items.find_by(id: params[:id])
   end
 
 end

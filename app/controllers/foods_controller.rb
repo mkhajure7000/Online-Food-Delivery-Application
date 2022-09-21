@@ -51,6 +51,10 @@ class FoodsController < ApplicationController
 
   def set_food
     @food = @restaurant.foods.find_by(id: params[:id])
+    if @food.blank?
+      flash[:errors] = "food  does not exists"
+      redirect_to restaurant_foods_path
+    end
   end
   
 end
