@@ -56,5 +56,5 @@ class FoodsController < ApplicationController
       redirect_to restaurant_foods_path
     end
   end
-
+  
 end

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user
-  
+  before_action :set_current_cart
+
   def current_user
     @user ||= User.find_by(id: session[:user_id]) if session[:user_id].present?
   end
@@ -15,5 +16,9 @@ class ApplicationController < ActionController::Base
       redirect_to new_session_path
     end
   end
-  
+
+  def set_current_cart
+    @current_cart ||= current_user.get_cart if current_user.present?
+  end
+
 end

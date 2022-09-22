@@ -18,7 +18,14 @@
               <%= link_to "Restaurant", restaurants_path(current_user.id), class: "nav-link" %>
             </li>
           <% end %>
-           <li class="nav-item">
+          <li class="nav-item">
+            <%= link_to "Cart", cart_items_path(current_user.id), class: "nav-link" %>
+            <span class="badge badge-info"><%= @current_cart.cart_items.count %></span>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Your Orders", orders_path(current_user.id), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "Address", user_addresses_path(current_user.id), class: "nav-link" %>
           </li>
           <li class="nav-item">

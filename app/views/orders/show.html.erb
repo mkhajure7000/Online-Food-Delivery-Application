@@ -1,0 +1,49 @@
+<div style="min-height:72vh">
+  <h1>Your order items</h1>
+  <div class="row">
+    <% @order.order_items.each do| order_item |%>
+      <div class="col-md-4">
+        <div class="card">
+          <table class="table table-hover table-striped table-primary h5">
+            <tr>
+              <td colspan = "2"><h1><%= order_item.food.restaurant.name %></h1></td>
+            </tr>
+            <tr>
+              <td>
+                Dish:-  
+              </td>
+              <td>
+                <%= order_item.food.name %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Price:-  
+              </td>
+              <td>
+                <%= order_item.food.price %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                quantity:-  
+              </td>
+              <td>
+                <%= order_item.quantity %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Total Price:-  
+              </td>
+              <td>
+                <%= order_item.total_price %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    <% end %>
+    <h1>Total amount- <%= @order.total_amount %></h1>
+  </div>
+</div>
