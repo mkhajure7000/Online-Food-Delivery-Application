@@ -26,9 +26,24 @@
     <% else %>
       <h1>
         Online Food Delivery<br>
-        <%= link_to "Sign up", new_user_path, class: "btn btn-success" %><br>
+        <%= link_to "Sign up", new_user_path, class: "btn btn-success", data: { bs_toggle: 'modal', bs_target: '#newUserModal', remote: true } %><br>
         <%= link_to "login", new_session_path, class: "btn btn-success" %>
       </h1>
     <%end%>
+  </div>
+</div>
+
+<div class="modal fade" id="newUserModal" tabindex="-1" role="dialog" aria-labelledby="newUserModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newUserModalLabel">Create New User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="newUserForm">
+      </div>
+    </div>
   </div>
 </div>
