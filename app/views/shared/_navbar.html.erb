@@ -20,7 +20,7 @@
           <% end %>
           <li class="nav-item">
             <%= link_to "Cart", cart_items_path(current_user.id), class: "nav-link" %>
-            <span class="badge badge-info"><%= @current_cart.cart_items.count %></span>
+            <span class="badge badge-info" id="count"><%= @current_cart.cart_items.count %></span>
           </li>
           <li class="nav-item">
             <%= link_to "Your Orders", orders_path(current_user.id), class: "nav-link" %>
@@ -33,7 +33,7 @@
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Sign up", new_user_path, class: "nav-link" %><br>
+            <%= link_to "Sign up", new_user_path, class: "nav-link", data: { bs_toggle: 'modal', bs_target: '#newUserModal', remote: true } %><br>
           </li>
           <li class="nav-item">
             <%= link_to "login", new_session_path, class: "nav-link" %>

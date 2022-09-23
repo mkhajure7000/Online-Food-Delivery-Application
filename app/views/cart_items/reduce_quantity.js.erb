@@ -1,0 +1,3 @@
+document.querySelector("#total").innerHTML = <%= @current_cart.total_cart_price  %>
+document.querySelector("#total" + <%= @cart_item.id %>).innerHTML = <%= @cart_item.total_price  %>
+document.querySelector("#quant" + <%= @cart_item.id %>).innerHTML = <%= @cart_item.quantity  %>

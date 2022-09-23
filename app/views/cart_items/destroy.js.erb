@@ -1,0 +1,7 @@
+document.querySelector("#cartitem" + <%= @cart_item.id %>).remove();
+document.querySelector("#total").innerHTML = <%= @current_cart.total_cart_price  %>
+document.querySelector("#count").innerHTML = <%= @current_cart.cart_items.count %>
+
+if (<%= @current_cart.cart_items.count <= 0 %>) {
+$("#placeorder").hide();
+}

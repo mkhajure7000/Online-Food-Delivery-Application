@@ -3,8 +3,9 @@
     <div class="row">
       <% @current_cart.cart_items.each do |cart_item| %>
         <div class="col-md-4">
-          <div class="card">
+          <div class="card" id="cartitem<%= cart_item.id %>">
             <table class="table table-hover table-striped table-primary h5">
+              <tbody>
               <tr>
                 <td colspan = "2"><h1><%= cart_item.food.restaurant.name %></h1></td>
               </tr>
@@ -29,7 +30,7 @@
                   quantity:-  
                 </td>
                 <td>
-                  <%= cart_item.quantity %>
+                  <div id="quant<%= cart_item.id %>"><%= cart_item.quantity %></div>
                 </td>
               </tr>
               <tr>
@@ -37,23 +38,23 @@
                     Total Price:-  
                 </td>
                 <td>
-                  <%= number_to_currency(cart_item.total_price) %>
+                  <div id="total<%= cart_item.id %>"><%= number_to_currency(cart_item.total_price) %></div>
                 </td>
               </tr>
             </table>
             <div class="d-flex justify-content-around align-items-center">
-              <%= link_to "Add one", cart_item_add_path(:id => cart_item), method: :post, class:"btn btn-sm btn-primary" %>
-              <%= link_to "Reduce one", cart_item_reduce_path(:id => cart_item), method: :post, class:"btn btn-sm btn-primary" %>
-              <%= link_to "Remove item", cart_item_path(cart_item), method: :delete, class:"btn btn-sm btn-primary" %>
+              <%= link_to("Add one", cart_item_add_path(:id => cart_item), method: :post, remote: true, class:"btn btn-sm btn-primary") %>
+              <%= link_to "Reduce one", cart_item_reduce_path(:id => cart_item), method: :post, remote: true, class:"btn btn-sm btn-primary" %>
+              <%= link_to("Remove item", cart_item_path(cart_item), method: :delete, remote: true, class:"btn btn-sm btn-primary") %>
             </div>     
           </div>
         </div>
       <% end %>
     </div>
     <h1>
-      <% if @current_cart.cart_items.present? %>
-        Total amount- <%= @current_cart.total_cart_price  %>
-        <div class="mb-2">
+      <% if @current_cart.cart_items.count > 0 %>
+        <div class="mb-2" id='placeorder'>
+          <div id="total"><%=  @current_cart.total_cart_price %></div>
           <%= form_with url: orders_path, method: :post do |form| %>
             <%= form.label :address %>
             <%= form.select :address, options_for_select(get_address)  %><br>
