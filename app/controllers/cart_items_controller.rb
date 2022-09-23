@@ -14,17 +14,18 @@ class CartItemsController < ApplicationController
 
   def destroy
     @cart_item.destroy
-    # redirect_back(fallback_location: root_path)
     respond_to do |format|
-      format.html
-      format.js
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js 
     end
   end  
   
   def add_quantity
     @cart_item.quantity += 1
     @cart_item.save
-    redirect_to cart_items_path
+    respond_to do |format|
+      format.js
+    end
   end
   
   def reduce_quantity
@@ -32,7 +33,9 @@ class CartItemsController < ApplicationController
       @cart_item.quantity -= 1
     end
     @cart_item.save
-    redirect_to cart_items_path
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
